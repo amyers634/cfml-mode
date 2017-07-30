@@ -1,8 +1,10 @@
 ;;; cfml-mode.el --- CFML editing support
 
-;; Copyright (C) 2017- Andrew Myers
+;; Copyright 2017 Andrew Myers
 
 ;; Author: Andrew Myers <am2605@gmail.com>
+;; URL: https://github.com/am2605/cfml-mode
+;; Version: 1.0.0
 
 ;;{{{ GPL
 
@@ -25,26 +27,30 @@
 
 ;;; Commentary:
 
-;; This file contains definitions of CFML submode classes, and well as
-;; support functions for proper indentation.
+;; This file contains definitions of CFML submode classes.
 
 ;; Usage:
 
-;; (require 'mmm-auto)
+;; (require 'mmm-mode)
+;; (require 'cfml-mode)
 
-;; (setq mmm-global-mode 'auto)
+;; (add-to-list 'magic-mode-alist
+;;              '("<cfcomponent" . cfml-mode))
+;; (add-to-list 'magic-mode-alist
+;;              '("<!---" . cfml-mode))
+;; (add-to-list 'auto-mode-alist
+;;              '("\\.cfm\\'" . cfml-mode))
+;; (add-to-list 'auto-mode-alist
+;;              '("\\.cfc\\'" . cfscript-mode))
 
-;; (mmm-add-mode-ext-class 'html-cfml-mode "\\.cfm\\''" 'html-cfm)
-;; (mmm-add-mode-ext-class 'cfml-mode "\\.cfc\\'" 'html-cfm)
-;; (mmm-add-mode-ext-class 'cfml-mode "\\.cfc\\'" 'cfc-script)
-
-;; (add-to-list 'auto-mode-alist '("\\.cfm\\'" . cfml-mode))
-;; (add-to-list 'auto-mode-alist '("\\.cfc\\'"  . cfml-mode))
+;; (setq mmm-global-mode 'maybe)
+;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'html-cfm)
+;; (mmm-add-mode-ext-class nil "\\.cfc\\'" 'html-cfm)
 
 ;; Optional settings:
 
-;; (setq mmm-submode-decoration-level 2
-;;       mmm-parse-when-idle t)
+;; (setq mmm-submode-decoration-level 0)
+
 
 ;;; Code:
 

@@ -64,7 +64,7 @@
     :back "[ \t]*</cfscript>")))
 
 (defun cfml-indent-to-previous ()
-  "Inserts a newline character then indents the new line just like the previous line"
+  "Insert a newline character then indent the new line just like the previous line."
   (interactive)
   (newline)
   (unless (looking-back "\\`\n*")

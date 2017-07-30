@@ -10,7 +10,8 @@ cfml-mode is available on [melpa](https://melpa.org)
 
 Add the following to your init.el
 
-```(require 'mmm-mode)
+```lisp
+(require 'mmm-mode)
 (require 'cfml-mode)
 
 ;; choose modes for CFML automatically

@@ -5,6 +5,7 @@
 ;; Author: Andrew Myers <am2605@gmail.com>
 ;; URL: https://github.com/am2605/cfml-mode
 ;; Version: 1.0.0
+;; Package-Requires: ((emacs "24.3") (mmm-mode "0.5.4"))
 
 ;;{{{ GPL
 
@@ -41,7 +42,7 @@
 ;; (add-to-list 'auto-mode-alist
 ;;              '("\\.cfm\\'" . cfml-mode))
 ;; (add-to-list 'auto-mode-alist
-;;              '("\\.cfc\\'" . cfscript-mode))
+;;              '("\\.cfc\\'" . cfml-cfscript-mode))
 
 ;; (setq mmm-global-mode 'maybe)
 ;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'html-cfm)
@@ -58,11 +59,11 @@
 
 (mmm-add-classes
  '((html-cfm
-    :submode cfscript-mode
+    :submode cfml-cfscript-mode
     :front "<cfscript>"
     :back "[ \t]*</cfscript>")))
 
-(defun indent-to-previous ()
+(defun cfml-indent-to-previous ()
   "Inserts a newline character then indents the new line just like the previous line"
   (interactive)
   (newline)
@@ -70,8 +71,8 @@
     (indent-relative-maybe)))
 
 ;;;###autoload
-(define-derived-mode cfscript-mode js-mode "cfscript"
-  (local-set-key (kbd "RET") 'indent-to-previous)
+(define-derived-mode cfml-cfscript-mode js-mode "cfscript"
+  (local-set-key (kbd "RET") 'cfml-indent-to-previous)
   (local-set-key (kbd "S-<tab>") (lambda () (interactive) (unindent-by-removing-n-spaces sgml-basic-offset)))
   ;; (setq indent-line-function 'tab-to-tab-stop)
   ;;(setq indent-line-function 'sgml-indent-line)
@@ -81,7 +82,7 @@
 ;;;###autoload
 (define-derived-mode cfml-mode html-mode "CFML"
   (setq tab-stop-list (number-sequence sgml-basic-offset 120 sgml-basic-offset))
-  (local-set-key (kbd "RET") 'indent-to-previous)
+  (local-set-key (kbd "RET") 'cfml-indent-to-previous)
   ;;  (local-set-key (kbd "S-<tab>") (lambda () (interactive) (unindent-by-removing-n-spaces sgml-basic-offset)))
   ;; (setq indent-line-function 'tab-to-tab-stop)
   (setq indent-line-function 'sgml-indent-line)

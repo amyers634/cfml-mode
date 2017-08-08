@@ -5,7 +5,7 @@
 ;; Author: Andrew Myers <am2605@gmail.com>
 ;; URL: https://github.com/am2605/cftag-mode
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "25") (mmm-mode "0.5.4"))
+;; Package-Requires: ((emacs "25"))
 
 ;;{{{ GPL
 

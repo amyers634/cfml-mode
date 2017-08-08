@@ -4,8 +4,8 @@
 
 ;; Author: Andrew Myers <am2605@gmail.com>
 ;; URL: https://github.com/am2605/cfml-mode
-;; Version: 1.0.0
-;; Package-Requires: ((emacs "25") (mmm-mode "0.5.4"))
+;; Version: 1.0.1
+;; Package-Requires: ((emacs "25") (mmm-mode "0.5.4") (cftag-mode "1.0.0"))
 
 ;;{{{ GPL
 
@@ -33,7 +33,7 @@
 ;; Usage:
 
 ;; (require 'mmm-mode)
-;; (require 'cftag-mode)
+;; (require 'cfml-mode)
 
 ;; (add-to-list 'magic-mode-alist
 ;;              '("<cfcomponent" . cftag-mode))
@@ -71,7 +71,7 @@
 
 ;;;###autoload
 (define-derived-mode cfml-cfscript-mode js-mode "cfscript"
-  (setq tab-stop-list (number-sequence sgml-basic-offset 120 c-basic-indent))
+  (setq tab-stop-list (number-sequence sgml-basic-offset 120 sgml-basic-offset))
   (local-set-key (kbd "RET") 'cfml-indent-to-previous)
   (electric-indent-local-mode -1)
   (add-to-list 'mmm-save-local-variables 'js--quick-match-re)

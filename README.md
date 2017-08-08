@@ -14,22 +14,19 @@ Add the following to your init.el
 (require 'mmm-mode)
 (require 'cfml-mode)
 
-;; choose modes for CFML automatically
 (add-to-list 'magic-mode-alist
-             '("<cfcomponent" . cfml-mode))
+             '("<cfcomponent" . cftag-mode))
 (add-to-list 'magic-mode-alist
-             '("<!---" . cfml-mode))
+             '("<!---" . cftag-mode))
 (add-to-list 'auto-mode-alist
-             '("\\.cfm\\'" . cfml-mode))
+             '("\\.cfm\\'" . cftag-mode))
 (add-to-list 'auto-mode-alist
-             '("\\.cfc\\'" . cfscript-mode))
+             '("\\.cfc\\'" . cfml-cfscript-mode))
 
-;; Use mmm-mode for highlighting of cfscript blocks in cfml files
 (setq mmm-global-mode 'maybe)
-(mmm-add-mode-ext-class nil "\\.cfm\\'" 'html-cfm)
-(mmm-add-mode-ext-class nil "\\.cfc\\'" 'html-cfm)
+(mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-cftag)
+(mmm-add-mode-ext-class nil "\\.cfc\\'" 'cfml-cftag)
 
+;; Optional 
 (setq mmm-submode-decoration-level 0)
 ```
-
-

@@ -28,30 +28,7 @@
 
 ;;; Commentary:
 
-;; This file contains definitions of CFML submode classes.
-
-;; Usage:
-
-;; (require 'mmm-mode)
-;; (require 'cftag-mode)
-
-;; (add-to-list 'magic-mode-alist
-;;              '("<cfcomponent" . cftag-mode))
-;; (add-to-list 'magic-mode-alist
-;;              '("<!---" . cftag-mode))
-;; (add-to-list 'auto-mode-alist
-;;              '("\\.cfm\\'" . cftag-mode))
-;; (add-to-list 'auto-mode-alist
-;;              '("\\.cfc\\'" . cftag-cfscript-mode))
-
-;; (setq mmm-global-mode 'maybe)
-;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'html-cfm)
-;; (mmm-add-mode-ext-class nil "\\.cfc\\'" 'html-cfm)
-
-;; Optional settings:
-
-;; (setq mmm-submode-decoration-level 0)
-
+;; This file redefines html-mode with appropriate adjustments for CFML.
 
 ;;; Code:
 

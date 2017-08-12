@@ -1,4 +1,4 @@
-;;; cftag-mode.el --- CFML editing support
+;;; cftag-mode.el --- Emacs mode for editing tag-based CFML files
 
 ;; Copyright 2017 Andrew Myers
 

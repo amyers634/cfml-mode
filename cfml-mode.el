@@ -1,4 +1,4 @@
-;;; cfml-mode.el --- CFML editing support
+;;; cfml-mode.el --- Emacs mode for editing CFML files
 
 ;; Copyright 2017 Andrew Myers
 

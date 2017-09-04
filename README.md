@@ -26,6 +26,7 @@ Add the following to your init.el
 (setq mmm-global-mode 'maybe)
 (mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-cftag)
 (mmm-add-mode-ext-class nil "\\.cfc\\'" 'cfml-cftag)
+(mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-js)
 
 ;; Optional 
 (setq mmm-submode-decoration-level 0)

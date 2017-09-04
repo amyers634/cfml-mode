@@ -47,6 +47,7 @@
 ;; (setq mmm-global-mode 'maybe)
 ;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-cftag)
 ;; (mmm-add-mode-ext-class nil "\\.cfc\\'" 'cfml-cftag)
+;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-js)
 
 ;; Optional settings:
 
@@ -61,6 +62,12 @@
     :submode cfml-cfscript-mode
     :front "<cfscript>"
     :back "[ \t]*</cfscript>")))
+
+(mmm-add-classes
+ '((cfml-js
+    :submode js-mode
+    :front "<script[^>]*>[ \t]*\n?"
+    :back "[ \t]*</script>")))
 
 (defun cfml-indent-to-previous ()
   "Insert a newline character then indent the new line just like the previous line."

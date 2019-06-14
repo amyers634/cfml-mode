@@ -36,9 +36,9 @@
 
 ;;; Code:
 
-
-(require 'mmm-mode)
-(require 'cftag-mode)
+(with-no-warnings
+  (require 'mmm-mode)
+  (require 'cftag-mode))
 
 ;;;###autoload
 (add-to-list 'magic-mode-alist

@@ -4,7 +4,7 @@
 
 ;; Author: Andrew Myers <am2605@gmail.com>
 ;; URL: https://github.com/am2605/cfml-mode
-;; Version: 1.0.1
+;; Version: 1.1.0
 ;; Package-Requires: ((emacs "25") (mmm-mode "0.5.4") (cftag-mode "1.0.0"))
 
 ;;{{{ GPL
@@ -32,7 +32,7 @@
 
 ;; Usage:
 
-;; (require 'mmm-mode)
+;; Install the cfml-mode package.  CFML files should now open in cfml-mode
 
 ;;; Code:
 

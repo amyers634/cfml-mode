@@ -33,29 +33,34 @@
 ;; Usage:
 
 ;; (require 'mmm-mode)
-;; (require 'cfml-mode)
-
-;; (add-to-list 'magic-mode-alist
-;;              '("<cfcomponent" . cftag-mode))
-;; (add-to-list 'magic-mode-alist
-;;              '("<!---" . cftag-mode))
-;; (add-to-list 'auto-mode-alist
-;;              '("\\.cfm\\'" . cftag-mode))
-;; (add-to-list 'auto-mode-alist
-;;              '("\\.cfc\\'" . cfml-cfscript-mode))
-
-;; (setq mmm-global-mode 'maybe)
-;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-cftag)
-;; (mmm-add-mode-ext-class nil "\\.cfc\\'" 'cfml-cftag)
-;; (mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-js)
-
-;; Optional settings:
-
-;; (setq mmm-submode-decoration-level 0)
 
 ;;; Code:
 
+
+(require 'mmm-mode)
 (require 'cftag-mode)
+
+;;;###autoload
+(add-to-list 'magic-mode-alist
+             '("<cfcomponent" . cftag-mode))
+;;;###autoload
+(add-to-list 'magic-mode-alist
+             '("<!---" . cftag-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist
+             '("\\.cfm\\'" . cftag-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist
+             '("\\.cfc\\'" . cfml-cfscript-mode))
+
+(setq mmm-global-mode 'maybe)
+;;;###autoload
+(mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-cftag)
+;;;###autoload
+(mmm-add-mode-ext-class nil "\\.cfc\\'" 'cfml-cftag)
+;;;###autoload
+(mmm-add-mode-ext-class nil "\\.cfm\\'" 'cfml-js)
+(setq mmm-submode-decoration-level 0)
 
 (mmm-add-classes
  '((cfml-cftag
@@ -84,6 +89,7 @@
   (add-to-list 'mmm-save-local-variables 'js--quick-match-re)
   (add-to-list 'mmm-save-local-variables 'js--quick-match-re-func))
 
+;;;###autoload
 (define-derived-mode cfml-mode cftag-mode "CFML"
   (setq tab-stop-list (number-sequence sgml-basic-offset 120 sgml-basic-offset))
   (local-set-key (kbd "RET") 'cfml-indent-to-previous)

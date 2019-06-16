@@ -1,34 +1,32 @@
 ;;; cfml-mode.el --- Emacs mode for editing CFML files
 
-;; Copyright 2017 Andrew Myers
+;; Copyright 2019 Andrew Myers
 
 ;; Author: Andrew Myers <am2605@gmail.com>
 ;; URL: https://github.com/am2605/cfml-mode
-;; Version: 1.1.0
-;; Package-Requires: ((emacs "25") (mmm-mode "0.5.4"))
+;; Version: 1.2.0
+;; Package-Requires: ((emacs "25"))
 
 ;;{{{ GPL
 
-;; This file is free software; you can redistribute it and/or modify
+;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
-
-;; This file is distributed in the hope that it will be useful,
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 ;; GNU General Public License for more details.
-
+;;
 ;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to
-;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-;; Boston, MA 02111-1307, USA.
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;}}}
 
 ;;; Commentary:
 
-;; This file contains definitions of CFML submode classes.
+;; This file provides syntax highlighting for CFML (also known as ColdFusion) source files.
 
 ;; Usage:
 

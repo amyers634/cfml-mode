@@ -45,18 +45,18 @@
   :link '(emacs-commentary-link :tag "Commentary" "cfml-mode"))
 
 (defconst cfml-html-empty-tags
-	      '("area" "base" "basefont" "br" "col" "frame" "hr" "img" "input"
-		"isindex" "link" "meta" "param" "wbr"))
+  '("area" "base" "basefont" "br" "col" "frame" "hr" "img" "input"
+	"isindex" "link" "meta" "param" "wbr"))
 
 (defconst cfml-html-unclosed-tags 
-	'("body" "colgroup" "dd" "dt" "head" "html" "li" "option"
-		"p" "tbody" "td" "tfoot" "th" "thead" "tr"))
+  '("body" "colgroup" "dd" "dt" "head" "html" "li" "option"
+	"p" "tbody" "td" "tfoot" "th" "thead" "tr"))
 
 (defconst cfml-empty-tags
-	'("cfargument" "cfdump" "cfinclude" "cfparam" "cfqueryparam" "cfreturn" "cfset" "cfsetting" "cfthrow" ))
-	
+  '("cfabort" "cfargument" "cfbreak" "cfcontent" "cfcontinue" "cfcookie" "cfdirectory" "cfdump" "cffile" "cfflush" "cfftp" "cfheader" "cfhtmlhead" "cfhttpparam" "cfinclude" "cfinvokeargument" "cflocation" "cflog" "cfmodule" "cfparam" "cfproperty" "cfqueryparam" "cfrethrow" "cfreturn" "cfset" "cfsetting" "cfstoredproc" "cfthrow" "cftrace"))
+
 (defconst cfml-unclosed-tags
-	'("cfelse" "cfelseif"))
+  '("cfelse" "cfelseif"))
 
 (defun cfml-get-previous-indentation ()
   "Get the column of the previous indented line"
@@ -69,8 +69,8 @@
     (current-column)))
 
 (defconst cfml-outdent-regexp
-	"\\(<cfelse\\(if[^>]+\\)?>\\)"
-)
+  "\\(<cfelse\\(if[^>]+\\)?>\\)"
+  )
 
 (defconst cfml--cf-submode
   (mhtml--construct-submode 'js-mode
@@ -86,9 +86,9 @@
 	(beginning-of-line)
 	(skip-chars-forward " \t")
 	(cond
-	  ((looking-at cfml-outdent-regexp) (indent-line-to (max 0 (- (cfml-get-previous-indentation) cfml-tab-width))))
-	  (t (mhtml-indent-line)))))
-	 
+	 ((looking-at cfml-outdent-regexp) (indent-line-to (max 0 (- (cfml-get-previous-indentation) cfml-tab-width))))
+	 (t (mhtml-indent-line)))))
+
 (defun cfml-syntax-propertize (start end)
   ;; First remove our special settings from the affected text.  They
   ;; will be re-applied as needed.
@@ -124,12 +124,24 @@
          (unless (syntax-ppss-context (syntax-ppss))
            (mhtml--syntax-propertize-submode cfml--cf-submode end)))))		   
     sgml-syntax-propertize-rules)
-	
+   
    ;; Make sure to handle the situation where
    ;; mhtml--syntax-propertize-submode moved point.
    (point) end))
-	 
-	 
+
+(define-skeleton cfml-cfdump
+  "CFML cfdump tag."
+  nil
+  "<cfdump var=\"#" (skeleton-read "var: ") "#\" abort=\"" (skeleton-read "abort: ")
+  "\">")
+
+(define-skeleton cfml-cfqueryparam
+  "CFML cfqueryparam tag."
+  nil
+  "<cfqueryparam cfsqltype=\"" (skeleton-read "cfsqltype: ") "\" value=\"#" (skeleton-read "value: ")
+  "#\">")
+
+
 ;;;###autoload
 (define-derived-mode cfml-mode html-mode
   '((sgml-xml-mode "XHTML+" "CFML+") (:eval (mhtml--submode-lighter)))
@@ -162,7 +174,7 @@ the rules from `css-mode'."
   (mhtml--mark-crucial-buffer-locals cfml--cf-submode)
   (setq mhtml--crucial-variables (delete-dups mhtml--crucial-variables))
 
-  ;: Hack
+                                        ;: Hack
   (js--update-quick-match-re)
 
   ;; This is sort of a prog-mode as well as a text mode.

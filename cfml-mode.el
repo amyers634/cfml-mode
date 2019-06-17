@@ -186,7 +186,7 @@ the rules from `css-mode'."
   (run-hooks 'prog-mode-hook))
 
 (defvar cfml--types-re
-  (concat "\\<" (regexp-opt '(
+  (concat "\\_<" (regexp-opt '(
                               "any"
                               "array"
                               "binary"
@@ -199,7 +199,7 @@ the rules from `css-mode'."
                               "uuid"
                               "void"
                               "xml")
-                            t) "\\>"))
+                            t) "\\_>"))
 
 (defvar cfml--builtin-re
   (concat "\\<" (regexp-opt '(

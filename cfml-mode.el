@@ -69,7 +69,6 @@
     (current-column)))
 
 (defconst cfml-outdent-regexp
-;;  "\\(<cfelse\\(if[^>]+\\)?>\\)"
   "\\(<cfelse\\(if\\([^>]+\\)\\)?>\\)"
   )
 
@@ -82,6 +81,7 @@
                             :keymap js-mode-map))
 
 (defconst cfml-tab-width 4)
+
 (defun cfml-indent-line ()
   (interactive)
   (mhtml-indent-line)
@@ -124,7 +124,7 @@
          (goto-char (match-end 0))
          ;; Don't apply in a comment.
          (unless (syntax-ppss-context (syntax-ppss))
-           (mhtml--syntax-propertize-submode cfml--cf-submode end)))))		   
+           (mhtml--syntax-propertize-submode cfml--cf-submode end)))))
     sgml-syntax-propertize-rules)
    
    ;; Make sure to handle the situation where
@@ -214,7 +214,9 @@ the rules from `css-mode'."
                               "mid"
                               "ormExecuteQuery"
                               "queryExecute"
-                              "right")
+                              "right"
+                              "writeDump"
+                              "writeOutput")
                             t) "\\>"))
 
 ;;;###autoload

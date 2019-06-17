@@ -69,7 +69,8 @@
     (current-column)))
 
 (defconst cfml-outdent-regexp
-  "\\(<cfelse\\(if[^>]+\\)?>\\)"
+;;  "\\(<cfelse\\(if[^>]+\\)?>\\)"
+  "\\(<cfelse\\(if\\([^>]+\\)\\)?>\\)"
   )
 
 (defconst cfml--cf-submode
@@ -80,14 +81,15 @@
                             :propertize #'js-syntax-propertize
                             :keymap js-mode-map))
 
+(defconst cfml-tab-width 4)
 (defun cfml-indent-line ()
   (interactive)
+  (mhtml-indent-line)
   (save-excursion
 	(beginning-of-line)
-	(skip-chars-forward " \t")
-	(cond
-	 ((looking-at cfml-outdent-regexp) (indent-line-to (max 0 (- (cfml-get-previous-indentation) cfml-tab-width))))
-	 (t (mhtml-indent-line)))))
+	(back-to-indentation)
+	(if
+	 (looking-at cfml-outdent-regexp) (indent-line-to (max 0 (- (cfml-get-previous-indentation) cfml-tab-width))))))
 
 (defun cfml-syntax-propertize (start end)
   ;; First remove our special settings from the affected text.  They

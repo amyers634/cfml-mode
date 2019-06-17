@@ -125,6 +125,7 @@
          ;; Don't apply in a comment.
          (unless (syntax-ppss-context (syntax-ppss))
            (mhtml--syntax-propertize-submode cfml--cf-submode end)))))
+
     sgml-syntax-propertize-rules)
    
    ;; Make sure to handle the situation where
@@ -202,7 +203,7 @@ the rules from `css-mode'."
                             t) "\\_>"))
 
 (defvar cfml--builtin-re
-  (concat "\\<" (regexp-opt '(
+  (concat "\\_<" (regexp-opt '(
                               "arrayLen"
                               "arrayAppend"
                               "dateAdd"
@@ -217,7 +218,7 @@ the rules from `css-mode'."
                               "right"
                               "writeDump"
                               "writeOutput")
-                            t) "\\>"))
+                            t) "\\_>"))
 
 ;;;###autoload
 (define-derived-mode cfscript-mode js-mode "cfscript"

@@ -117,7 +117,7 @@
          ;; Don't apply in a comment.
          (unless (syntax-ppss-context (syntax-ppss))
            (mhtml--syntax-propertize-submode mhtml--js-submode end)))))
-    ("<cfscript.*?>"
+    ("<cfscript>"
      (0 (ignore
          (goto-char (match-end 0))
          ;; Don't apply in a comment.
@@ -144,7 +144,7 @@
 
 ;;;###autoload
 (define-derived-mode cfml-mode html-mode
-  '((sgml-xml-mode "XHTML+" "CFML+") (:eval (mhtml--submode-lighter)))
+  '((sgml-xml-mode "XHTML+" "cfml+") (:eval (mhtml--submode-lighter)))
   "Major mode based on `html-mode', but works with embedded JS and CSS.
 
 Code inside a <script> element is indented using the rules from
@@ -158,6 +158,9 @@ the rules from `css-mode'."
               #'mhtml--submode-fontify-region)
   (setq-local font-lock-extend-region-functions
               '(mhtml--extend-font-lock-region))
+
+  (font-lock-add-keywords nil `((,cfml--builtin-re . 'font-lock-builtin-face)))
+  (font-lock-add-keywords nil `((,cfml--types-re . 'font-lock-type-face)))
 
   ;; Attach this to both pre- and post- hooks just in case it ever
   ;; changes a key binding that might be accessed from the menu bar.
@@ -174,11 +177,50 @@ the rules from `css-mode'."
   (mhtml--mark-crucial-buffer-locals cfml--cf-submode)
   (setq mhtml--crucial-variables (delete-dups mhtml--crucial-variables))
 
-                                        ;: Hack
+  ;; Hack
   (js--update-quick-match-re)
 
   ;; This is sort of a prog-mode as well as a text mode.
   (run-hooks 'prog-mode-hook))
+
+(defvar cfml--types-re
+  (concat "\\<" (regexp-opt '(
+                              "any"
+                              "array"
+                              "binary"
+                              "boolean"
+                              "date"
+                              "numeric"
+                              "query"
+                              "string"
+                              "struct"
+                              "uuid"
+                              "void"
+                              "xml")
+                            t) "\\>"))
+
+(defvar cfml--builtin-re
+  (concat "\\<" (regexp-opt '(
+                              "arrayLen"
+                              "arrayAppend"
+                              "dateAdd"
+                              "dateCompare"
+                              "dateDiff"
+                              "dateFormat"
+                              "left"
+                              "listAppend"
+                              "mid"
+                              "ormExecuteQuery"
+                              "queryExecute"
+                              "right")
+                            t) "\\>"))
+
+;;;###autoload
+(define-derived-mode cfscript-mode js-mode "cfscript"
+	(font-lock-add-keywords nil '(("\\<component\\>" . 'font-lock-keyword-face)))
+    (font-lock-add-keywords nil `((,cfml--builtin-re . 'font-lock-builtin-face)))
+    (font-lock-add-keywords nil `((,cfml--types-re . 'font-lock-type-face)))
+)
 
 ;;;###autoload
 (add-to-list 'magic-mode-alist
@@ -191,7 +233,7 @@ the rules from `css-mode'."
              '("\\.cfm\\'" . cfml-mode))		
 ;;;###autoload
 (add-to-list 'auto-mode-alist
-             '("\\.cfc\\'" . js-mode))
+             '("\\.cfc\\'" . cfscript-mode))
 
 (provide 'cfml-mode)
 

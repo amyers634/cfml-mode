@@ -12,7 +12,8 @@ cfml-mode is on MELPA. Type `M-x package-install <RET> cfml-mode <RET>`
 to install it.
 
 ## Project Status & Contributing
-I'm currently using this project in my own emacs editor, however it is not under active development and no further enhancements are planned at this stage.
+
+This project is not under active development and no further enhancements are planned at this stage.
 
 Pull requests are welcome and will be considered.
 
